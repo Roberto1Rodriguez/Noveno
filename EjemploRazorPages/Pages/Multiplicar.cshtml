@@ -2,3 +2,22 @@
 @model EjemploRazorPages.Pages.MultiplicarModel
 @{
 }
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+<html>
+    <head>
+        <title>Beto Tabla</title>
+    </head>
+    <body>
+        <h1>Formulario</h1>
+        <form method="post" action="~/multiplicar">
+            <label>Numero 1: </label>
+            <input type="number" asp-for="@Model.Numero1" /><br />
+            <label>Numero 2: </label>
+        <input type="number" asp-for="@Model.Numero2" /><br />
+            <input type="submit" value="Multiplicar" />
+            <br />
+            <h2>Resultado: @Model.Resultado</h2>
+         
+        </form>
+    </body>
+</html>
