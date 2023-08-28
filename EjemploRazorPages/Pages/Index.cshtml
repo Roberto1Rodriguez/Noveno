@@ -11,5 +11,12 @@
     </head>
     <body>
         <h1>Ejemplo Razor Pages</h1>
+        <ul>
+            @foreach(var item in Model.Tabla)
+        {
+            <li>@item</li>
+        }
+         
+        </ul>
     </body>
 </html>
