@@ -32,12 +32,12 @@
         //declarar una variable var hacer que esta se declare desde antes mediante holsing
         //al usar let la variable solo se puede usar en su mismo bloque
 
-        const z;
-        z = 5; //const tambien hace holsing
+        //const z;
+ //       z = 5; //const tambien hace holsing
 
         //operadores aritmeticos=  +,-,*,/,%,**
         let a = 2 + 2;
-        let a = 3 ** 3;
+        a = 3 ** 3;
         //logicos= &,|,!,&&,||
         //relaciones: >,<,>=,<=,==,===,!=
         //asignacion: +=, -=,*=,/=,&=,|=,++,--,=
@@ -49,7 +49,7 @@
         // el operador === significa que dos valores son identicos en todos los aspectos, mientras que == solo le importa que tengan el mismo valor
 
         let e = true;
-        let f &=fasle;
+        //let f &=fasle;
 
         e |= true;
 
@@ -63,6 +63,79 @@
 
         console.log(s4);
 
+        let s5 = s2 + s4;
+        //cuando uno de los operadores es cadena  todo se hace cadena
+
+        //plantilla literal, (interpolacion)
+        let num = 1;
+        let num2 = 2;
+        let res = `El valor es ${num} ${num2}`;
+        let res2 = "El valor es ${num}";
+        //solo se usa con comillas inversas
+
+        console.log(res);
+        console.log(res2);
+
+        let caedna1 = "hola\
+        a\
+        todos";
+        console.log(caedna1);
+        //condicional: ?:
+
+        let valor =1>2?5:3;
+
+        if (1 > 2) { 
+        }
+
+        switch (valor) {
+            case 1: valor++; break;
+            default: valor--; break;
+        }
+
+        //ciclos
+        while (valor > 10) {
+
+        }
+
+        do {
+
+        }
+        while (valor > 10) ;
+
+        for (let i = 0; i < 10;i++) { 
+        }
+
+
+        let arreglo = [ 1, 2, 3, 4];
+
+
+        //ciclo for-of
+
+        for (let n of arreglo) {
+            console.log(n);
+        }
+
+
+        for (let n in arreglo) {
+            console.log(n);
+        }
+       
+        //array
+
+        let arr = [];
+        arr[0] = 5;
+        arr[1] = "hola";
+        arr[10] = true;
+
+        console.log(arr);
+        console.log(arr.length);
+
+        arr.push(100);// agrega o quita del inicio de la fila
+        arr.shift(200);//agrega o quita del final de la fila
+
+        let cad1="100";
+        let numero = parseInt( cad1) + 10;
+        console.log(numero);
 
 
 
