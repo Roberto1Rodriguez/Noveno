@@ -2,3 +2,37 @@
 @model EjemploRazorPages.Pages.JavaScript.Leccion2Model
 @{
 }
+
+<html>
+    <head>
+        <title>Leccion2</title>
+    </head>
+    <body>
+        <h1 id="holi">Leccion1 objetos dom y eventos</h1>
+        <form>
+            <input id="btnPresioname"; type="button" value="Presioname" />
+        <input type="button" value="Cambia color" />
+        </form>
+
+        <script>
+
+        //dom consiste convertir la etiquetas en objetos de prograacion con propiedades
+
+            let obj1 = document.querySelector("h1");
+            obj1.textContent = "hola";
+            obj1.style.color = "red";
+
+        let boton = document.getElementById("btnPresioname");
+        // let boton = document..querySelector("#btnPresioname");
+            boton.style.backgroundColor = "blue";
+
+
+            //querySelectorAll
+            //getElementByID
+            //getEelementsByClassName
+            //getEelementByTagName
+
+        </script>
+    
+    </body>
+</html>
