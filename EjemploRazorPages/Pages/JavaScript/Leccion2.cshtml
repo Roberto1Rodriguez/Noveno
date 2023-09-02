@@ -11,7 +11,7 @@
         <h1 id="holi">Leccion1 objetos dom y eventos</h1>
         <form>
             <input id="btnPresioname"; type="button" value="Presioname" />
-        <input type="button" value="Cambia color" />
+        <input type="button" id="btnCamibarColor" value="Cambia color" />
         </form>
 
         <script>
@@ -27,10 +27,36 @@
             boton.style.backgroundColor = "blue";
 
 
+
+            function mensaje() {
+                alert("hiciste clic");
+            }
+
+            boton.addEventListener("click", mensaje);
+
+
+
             //querySelectorAll
             //getElementByID
             //getEelementsByClassName
-            //getEelementByTagName
+            //getEelementsByTagName
+
+        let botoncambiar = document.getElementById("btnCamibarColor");
+
+
+
+        botoncambiar.addEventListener("click", function () { 
+            
+            if (obj1.style.color == "green") {
+                obj1.style.color = "red"
+            } else {
+                obj1.style.color = "green"
+            }
+            
+            }
+        );
+
+
 
         </script>
     

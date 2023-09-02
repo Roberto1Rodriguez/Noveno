@@ -1,0 +1,33 @@
+﻿@page
+@model EjemploRazorPages.Pages.JavaScript.Leccion3Model
+@{
+}
+<html>
+    <head>
+        <title>leccion 3</title>
+    </head>
+    <body>
+        <h1>Leccion 3 propagacion de eventos</h1>
+        <form id="formulario" >
+        <input  type="button" value="Botón 1" />
+        <input  type="button" value="Botón 2" />
+        <input  type="button" value="Botón 3" />
+        <p>Haz click en un botón</p>
+        </form>
+
+
+        <script>
+            let formulario1 = document.getElementById("formulario");
+
+            formulario1.addEventListener("click", function (event) { 
+            
+            
+                if (event.target.tagName=="INPUT") { 
+                    alert("hola");
+                
+                }
+            });
+          //un evento que sucede en una etiqueta se propaga a todos sus antecesores
+        </script>
+    </body>
+</html>
