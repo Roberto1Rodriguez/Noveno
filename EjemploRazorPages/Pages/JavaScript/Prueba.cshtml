@@ -1,0 +1,43 @@
+﻿@page
+@model EjemploRazorPages.Pages.JavaScript.PruebaModel
+@{
+}
+<html>
+<head>
+    <title>Documento sin título</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+</head>
+
+
+
+<body>
+    <table width="75%" border="1">
+        <tr>
+            <td id="Fila1">
+                <input name="CBFila1" type="checkbox" onClick="Marca(1)"> Fila número 1
+            </td>
+        </tr>
+        <tr>
+            <td id="Fila2">
+                <input name="CBFila2" type="checkbox" onClick="Marca(2)"> Fila número 2
+            </td>
+        </tr>
+        <tr>
+            <td id="Fila3">
+                <input name="CBFila3" type="checkbox" onClick="Marca(3)"> Fila número 3
+            </td>
+        </tr>
+    </table>
+    <script>
+        function Marca(i) {
+            if (document.getElementById("CBFila" + i).checked) {
+                document.getElementById("Fila" + i).style.background = red;
+            }
+            else {
+                document.getElementById("Fila" + i).style.background = white;
+            }
+        }
+    </script>
+</body>
+</html>
+
