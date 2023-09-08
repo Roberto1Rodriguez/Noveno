@@ -1,0 +1,46 @@
+﻿@page
+@model EjemploRazorPages.Pages.JavaScript.Leccion6Model
+@{
+}
+<html>
+    <head></head>
+    <body>
+        <form>
+            <input type="text" id="texto"/><input  type="button" value="+"/><br />
+            <select size="10"></select>
+            <input  type="button" value=">>"/>
+            <input type="button" value="<<"/>
+        <select size="10"></select>
+        </form>
+
+        <script>
+            const form = document.querySelector("form");
+            const textbox = form.querySelector("#texto");
+            const selects = form.getElementsByTagName("SELECT");
+
+
+
+            form.addEventListener("click"), function (event) {
+
+
+
+                if (event.target.type && event.target.type == "button") {
+
+                    var btn = event.target;
+
+                    if (btn.value == "+")&& textbox.value {
+                        let op = document.createElement("OPTION");
+                        op.textContent = textbox.value;
+                        selects[0].add(op);
+                        textbox.value = "";
+
+                    }
+
+
+
+                  
+                }
+            });
+        </script>
+    </body>
+</html>
