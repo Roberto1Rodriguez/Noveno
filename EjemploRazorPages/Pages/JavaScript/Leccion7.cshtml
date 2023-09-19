@@ -4,57 +4,29 @@
 }
 <html>
     <head>
-        <title></title>
+        <title>Leccion 7</title>
     </head>
     <body>
         <form>
-
-            <label >Num. Control:</label>
-            <input name="numControl" type="text"/>
-            <label >Nombre:</label>
-            <input name="nombre" type="text" />
-            <input id="btnAgregar" type="button"value="Agregar" />
+            <label>Num. Control: </label>
+            <input type="text" />
+            <label>Nombre: </label>
+            <input type="text" /><br />
+            <input type="button" value="Agregar" />
         </form>
         <table>
             <thead>
                 <tr>
                     <th>Num. Control</th>
-                <th>Nombre</th>
+                    <th>Nombre</th>
                 </tr>
+                
             </thead>
             <tbody>
-
+                <tr>
+                    <
+                </tr>
             </tbody>
         </table>
-
-        <script>
-            const table = document.querySelector("table tbody");
-            const form = document.querySelector("form");
-
-            form.querySelector("#btnAgregar").addEventListener("click", function () { 
-            
-            
-                let numConrol = form.elements.numControl.value;
-                let nombre = form.elements.nombre.value;
-            
-            
-            
-                if (numConrol && nombre) {
-
-                    let tr = tabla.insertRow();
-                    let td1 = tr.insertCell();
-                    td1.textContent=numControl
-                } else {
-                    form.reportValidity();
-                }
-            
-            
-            
-            
-            
-            
-            })
-
-        </script>
     </body>
 </html>
