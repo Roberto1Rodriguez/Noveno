@@ -1,0 +1,56 @@
+﻿@page
+@model EjemploRazorPages.Pages.JavaScript.Leccion10Model
+@{
+}
+<html>
+    <head>
+        <title>Leccion 10</title>
+        <style></style>
+    </head>
+    <body>
+        <div>
+            <input type="button" value="Nuevo" id="btnNuevo" />
+        </div>
+       <table>
+           <thead>
+               <tr>
+                   <th>Num. Control</th>
+                   <th>Nombre</th>
+                   <th></th>
+               </tr>
+           </thead>
+           <tbody>
+               <tr>
+                   <td>121G0289</td>
+                   <td>Roberto Rdz</td>
+                   <td>&vellip;</td>
+               </tr>
+           </tbody>
+       </table>
+
+
+        <div class="modal">
+            <form class="formAgregar">
+            <input type="text" placeholder="Número de control" />
+            <input type="text" placeholder="Nombre" />
+            <input type="submit" value="Agregar" />
+            <input type="button" value="Cancelar" />
+        </form>
+        </div>
+    <div class="modal">
+        <form class="formEditar">
+            <input type="text" placeholder="Número de control" />
+            <input type="text" placeholder="Nombre" />
+            <input type="submit" value="Agregar" />
+            <input type="button" value="Cancelar" />
+        </form>
+    </div>
+        <div class="modal">
+            <form class="formEliminar">
+                <p>¿Desea Eliminar?</p>
+                <input type="submit" value="Si" />
+                <input type="button" value="No" />
+            </form>
+        </div>
+    </body>
+</html>
