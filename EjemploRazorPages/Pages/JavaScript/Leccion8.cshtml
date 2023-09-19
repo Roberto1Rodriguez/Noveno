@@ -1,0 +1,92 @@
+﻿@page
+@model EjemploRazorPages.Pages.JavaScript.Leccion8Model
+@{
+}
+<html>
+<head>
+<title>Leccion 8</title>
+@*Arrow functions (LINQ)=>*@
+<style>
+            table{
+                width:80%;
+                margin:auto;
+                border-collapse:collapse;
+
+ 
+
+            }
+            td,th{
+                border:1px solid black;
+
+ 
+
+            }
+            td:first-of-type{
+                width:20%;
+            }
+</style>
+</head>
+<body>
+<h1>Leccion 8. Filtrado de datos</h1>
+<form>
+<input type="search"  id="txtSearch"/>
+<input type="button" value="Filtrar" id="btnFiltrar" />
+</form>
+<table>
+    <thead>
+<tr>
+<th>Núm. Control</th>
+<th>Nombre</th>
+</tr>
+<tbody></tbody>
+        </thead>
+</table> 
+
+<script src="~/scripts/alumnos.js"></script>
+
+
+<script>
+
+    var tabla;
+    function mostrarDatos(Datos) {
+             tabla ??=document.querySelector("table tbody");
+
+        if (tabla.rows.length < Datos.length) {
+
+                for (let i = tabla.rows.length; i <= Datos.length; i++) {
+
+                let row= tabla.insertRow();
+                row.insertCell();
+                row.insertCell();
+            }
+
+
+        }
+
+            for (let i = Datos.length; i < tabla.rows.length; i++) {
+                tabla.rows[i].style.display = "none";
+        }
+        for (let i = 0;i<Datos.length;i++) {
+                tabla.rows[i].cells[0].textContent = Datos[i].NumControl;
+                tabla.rows[i].cells[1].textContent = Datos[i].Nombre;
+        }
+
+    
+    }
+    mostrarDatos(lista);
+        const search = document.getElementById("txtSearch");
+
+    document.getElementById("btnFiltrar").addEventListener("click", () => {
+    
+    
+    
+    
+    
+    
+    
+        let filtrado = lista.filter(x => x.Nombre.includes(search.value) || x.NumControl.includes(search.value));
+            mostrarDatos(filtrado);
+})
+</script>
+</body>
+</html>
