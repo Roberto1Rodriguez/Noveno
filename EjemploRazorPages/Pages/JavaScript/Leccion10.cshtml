@@ -3,9 +3,12 @@
 @{
 }
 <html>
-    <head>
-        <title>Leccion 10</title>
-        <style>
+<head>
+    <title>Lección 10</title>
+
+
+
+    <style>
         table {
             width: 80%;
             margin: auto;
@@ -19,11 +22,9 @@
                 padding: 5px;
             }
 
-
-
             table th {
-                background: pink;
-                color: black;
+                background: black;
+                color: white;
             }
 
 
@@ -31,12 +32,6 @@
             table td:last-of-type {
                 text-align: center;
             }
-
-
-
-        input {
-            padding: 5px;
-        }
 
 
 
@@ -50,12 +45,10 @@
         input[type=button], input[type=submit] {
             background: black;
             color: white;
-            padding: 3px;
+            padding: 3px 10px;
         }
 
-
-
-        div.modal { /*overlay*/
+        div.modal { /* overlay*/
             display: none;
             width: 100%;
             height: 100%;
@@ -66,141 +59,165 @@
             padding: 0;
         }
 
-
-
             div.modal form {
-            
                 background: white;
                 border: 1px solid black;
                 width: 500px;
                 padding: 20px;
                 margin: 20px auto;
-                gap:10px;
-                flex-direction:column;
-                flex-wrap:wrap;
+                display: flex;
+                gap: 10px;
+                flex-wrap: wrap;
             }
 
-
-            div.modal form input[type=text],div.modal{
-                width:100%;
-                padding:5px;
-            }
-
-                div.modal form input {
-                   width:calc(50%-5px);
+                div.modal form input[type=text], div.modal form p {
+                    width: 100%;
+                    padding: 5px;
                 }
 
+                div.modal form input {
+                    width: calc(50%-5px);
+                }
                 table td:last-of-type{
-                
-                
-                position:relative;}
+                    position:relative;
+                }
+
+        table td:last-of-type .contextMenu {
+           display:block;
+        }
+                .contextMenu{
+                    display:none;
+                    border:1px solid black;
+                    padding:5px;
+                    width:150px;
+                    position:absolute;
+                    background:white;
+                    top:0;
+                    left:100%;
+
+                }
+                .contextMenu a{
+                    display:block;
+                    text-decoration:none;
+                    color:black;
+                    text-align:left;
+                    
+                }
+                .contextMenu a:hover{
+color:blue;                }
+
+    </style>
+</head>
+<body>
+    <h1 id="titulo">Lección 10: CRUD con ventanas modales</h1>
 
 
-               .contextMenu{
-               border:1px solid black;
-               padding:5px;
-               width:100px;
-               position:absolute;
-               top:0;
-               left:100%;
-               background-color:lightgray;
-               }
 
-               .contextMenu a{
-                display:block;
+    <div>
+        <input type="button" value="Nuevo" id="btnNuevo" />
+    </div>
 
-               }
-        </style>
-    </head>
-    <body>
-        <div>
-            <input type="button" value="Nuevo" id="btnNuevo" />
-        </div>
-       <table>
-           <thead>
-               <tr>
-                   <th>Num. Control</th>
-                   <th>Nombre</th>
-                   <th></th>
-               </tr>
-           </thead>
-           <tbody>
-               <tr>
-                   <td>121G0289</td>
-                   <td>Roberto Rdz</td>
-                   <td>&vellip;</td>
-               </tr>
-           </tbody>
-       </table>
 
-       <nav>
-           <a href="javascript">Editar</a>
-        <a href="javascript">Eliminar</a>
-       </nav>
-        <div class="modal">
-            <form class="formAgregar">
-            <input type="text" placeholder="Número de control" required pattern="\d{2}1[A-Z][EC0DM]\d{3}" />
-            <input type="text" placeholder="Nombre" />
+
+    <table>
+        <thead>
+            <tr>
+                <th>Núm.Control</th>
+                <th>Nombre</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+         
+        </tbody>
+    </table>
+   
+
+
+    <div class="modal">
+        <form class="formAgregar">
+            <input name="numControl" type="text" placeholder="Número de control" required pattern="\d{2}1[A-Z][EC0DM]\d{3}" />
+            <input name="nombre" type="text" placeholder="Nombre" required />
             <input type="submit" value="Agregar" />
             <input type="button" value="Cancelar" />
+
+
+
         </form>
-        </div>
+    </div>
+
+
+
     <div class="modal">
         <form class="formEditar">
             <input type="text" placeholder="Número de control" />
             <input type="text" placeholder="Nombre" />
-            <input type="submit" value="Agregar" />
+            <input type="submit" value="Guardar" />
             <input type="button" value="Cancelar" />
+
+
+
         </form>
     </div>
-        <div class="modal">
-            <form class="formEliminar">
-                <p>¿Desea Eliminar?</p>
-                <input type="submit" value="Si" />
-                <input type="button" value="No" />
-            </form>
-        </div>
-        <script>
-
-            const formAgregar = document.querySelector(".formAgregar");
-            const tabla = document.querySelector("table tbody");
-            document.getElementById("btnNuevo").addEventListener("click", function () {
-
-                formAgregar.parentElement.style.display = "block";
-
-
-            });
-            document.addEventListener("click", function (e) {
-
-                if (e.target.tagName == "INPUT" && (e.target.value == "Cancelar" || e.target.value == "No")) {
-
-
-                    e.target.form.reset();
-                    e.target.form.parentElement.style.display = "none";
-
-
-                }
 
 
 
-            });
+    <div class="modal">
+        <form class="formEliminar">
+            <p>¿Desea eliminar?</p>
+            <input type="submit" value="Si" />
+            <input type="button" value="No" />
 
-            document.addEventListener("submit", function (ev) {
-            
-                ev.preventDefault();
-                let form = ev.target;
-                if (form.classList.includes("formAgregar")) { 
-                    let tr = tabla.insertRow();
-                    tr.insertCell().textContent = form.elements.numControl.value;
-                    tr.insertCell().textContent = form.elements.numControl.value;
-                    tr.insertCell().innerHTML = "&vellip;";
-                    form.reset();
-                    form.parentElement.style.display = "none";
-}
-            
-            })
-            
 
-        </script>
-    </body>
+
+        </form>
+    </div>
+
+
+
+    <script>
+
+
+
+    </script>
+    <script>
+
+
+
+        const formAgregar = document.querySelector(".formAgregar");
+        const tabla = document.querySelector("table tbody");
+        const contextMenu = document.querySelector(".contextMenu");
+        document.getElementById("btnNuevo").addEventListener("click", function(){
+            formAgregar.parentElement.style.display="block"; });
+
+        document.body.addEventListener("click", function (e) {
+            if (e.target.tagName == "INPUT"&&( e.target.value=="Cancelar"||e.target.value=="No" ))
+            {
+                e.stopPropagation();
+                e.target.form.reset();
+                e.target.form.parentElement.style.display = "none";
+            }
+
+            else if (e.target.tagName == "TD" && e.target.textContent.trim() == "⋮") {
+                e.stopPropagation();
+                e.target.append(contextMenu);
+            }
+        });
+        document.body.addEventListener("submit", function (ev) {
+            ev.preventDefault();
+            let form = ev.target;
+            if (form.classList.contains("formAgregar")) {
+                let tr = tabla.insertRow();
+                tr.insertCell().textContent = form.elements.numControl.value
+                tr.insertCell().textContent = form.elements.nombre.value
+                tr.insertCell().innerHTML = "&vellip;";
+                form.reset();
+                form.parentElement.style.display = "none";
+
+            }
+        });
+
+    
+    </script>
+</body>
 </html>
