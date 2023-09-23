@@ -5,7 +5,112 @@
 <html>
     <head>
         <title>Leccion 10</title>
-        <style></style>
+        <style>
+        table {
+            width: 80%;
+            margin: auto;
+            border-collapse: collapse;
+        }
+
+
+
+            table td, table th {
+                border: 1px solid black;
+                padding: 5px;
+            }
+
+
+
+            table th {
+                background: pink;
+                color: black;
+            }
+
+
+
+            table td:last-of-type {
+                text-align: center;
+            }
+
+
+
+        input {
+            padding: 5px;
+        }
+
+
+
+        div {
+            padding: 10px;
+            text-align: center;
+        }
+
+
+
+        input[type=button], input[type=submit] {
+            background: black;
+            color: white;
+            padding: 3px;
+        }
+
+
+
+        div.modal { /*overlay*/
+            display: none;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,.3);
+            position: absolute;
+            top: 0;
+            left: 0;
+            padding: 0;
+        }
+
+
+
+            div.modal form {
+            
+                background: white;
+                border: 1px solid black;
+                width: 500px;
+                padding: 20px;
+                margin: 20px auto;
+                gap:10px;
+                flex-direction:column;
+                flex-wrap:wrap;
+            }
+
+
+            div.modal form input[type=text],div.modal{
+                width:100%;
+                padding:5px;
+            }
+
+                div.modal form input {
+                   width:calc(50%-5px);
+                }
+
+                table td:last-of-type{
+                
+                
+                position:relative;}
+
+
+               .contextMenu{
+               border:1px solid black;
+               padding:5px;
+               width:100px;
+               position:absolute;
+               top:0;
+               left:100%;
+               background-color:lightgray;
+               }
+
+               .contextMenu a{
+                display:block;
+
+               }
+        </style>
     </head>
     <body>
         <div>
@@ -28,10 +133,13 @@
            </tbody>
        </table>
 
-
+       <nav>
+           <a href="javascript">Editar</a>
+        <a href="javascript">Eliminar</a>
+       </nav>
         <div class="modal">
             <form class="formAgregar">
-            <input type="text" placeholder="Número de control" />
+            <input type="text" placeholder="Número de control" required pattern="\d{2}1[A-Z][EC0DM]\d{3}" />
             <input type="text" placeholder="Nombre" />
             <input type="submit" value="Agregar" />
             <input type="button" value="Cancelar" />
@@ -52,5 +160,47 @@
                 <input type="button" value="No" />
             </form>
         </div>
+        <script>
+
+            const formAgregar = document.querySelector(".formAgregar");
+            const tabla = document.querySelector("table tbody");
+            document.getElementById("btnNuevo").addEventListener("click", function () {
+
+                formAgregar.parentElement.style.display = "block";
+
+
+            });
+            document.addEventListener("click", function (e) {
+
+                if (e.target.tagName == "INPUT" && (e.target.value == "Cancelar" || e.target.value == "No")) {
+
+
+                    e.target.form.reset();
+                    e.target.form.parentElement.style.display = "none";
+
+
+                }
+
+
+
+            });
+
+            document.addEventListener("submit", function (ev) {
+            
+                ev.preventDefault();
+                let form = ev.target;
+                if (form.classList.includes("formAgregar")) { 
+                    let tr = tabla.insertRow();
+                    tr.insertCell().textContent = form.elements.numControl.value;
+                    tr.insertCell().textContent = form.elements.numControl.value;
+                    tr.insertCell().innerHTML = "&vellip;";
+                    form.reset();
+                    form.parentElement.style.display = "none";
+}
+            
+            })
+            
+
+        </script>
     </body>
 </html>
