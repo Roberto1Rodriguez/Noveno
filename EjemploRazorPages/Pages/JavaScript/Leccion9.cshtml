@@ -1,0 +1,118 @@
+﻿@page
+@model EjemploRazorPages.Pages.JavaScript.Leccion9Model
+@{
+}
+<html>
+<head>
+    <title>Leccion 8</title>
+    @*Arrow functions (LINQ)=>*@
+    <style>
+        table {
+            width: 80%;
+            margin: auto;
+            border-collapse: collapse;
+        }
+
+        td, th {
+            border: 1px solid black;
+        }
+
+            td:first-of-type {
+                width: 20%;
+            }
+
+
+            tfoot a{display:inline-block;}
+
+            tfoot a.selected{font-weight:bolder}
+    </style>
+</head>
+<body>
+    <h1>Leccion 9. Filtrado de datos</h1>
+    
+    <table>
+        <thead>
+            <tr>
+                <th>Núm. Control</th>
+                <th>Nombre</th>
+            </tr>
+       
+        </thead>
+
+        <tbody></tbody>
+        <tfoot>
+
+            <tr>
+                <td colspan="2">
+             
+                </td>
+            </tr>
+        </tfoot>
+    </table>
+   
+
+    <script src="~/scripts/alumnos.js"></script>
+    <script>
+        const tbody = document.querySelector("table tbody");
+        const tfoot = document.querySelector("table tfoot td");
+        const tamañoPaginas = 5;
+        const totalPaginas = Math.ceil(lista.length/tamañoPaginas);
+        let pagina = 0;
+
+
+        for(let i = 0; i < tamañoPaginas;i++)
+        {
+
+            let tr = tbody.insertRow();
+            tr.insertCell();
+            tr.insertCell();
+
+        }
+
+        for (let i = 0; i < totalPaginas; i++) { 
+        
+            let a = document.createElement("A");
+            a.href = "javascript:";
+            a.textContent = i+1;
+          
+            tfoot.append(a);
+        } 
+
+        function mostrstDatos(pag) { 
+        
+        
+            let inicio = tamañoPaginas * pag;
+            let final = Math.min(inicio+tamañoPaginas-1,lista.length-1);
+            
+            for (let i = inicio,pos=0; i <= final; i++,pos++) { 
+                let alumno = lista[i];
+                tbody.rows[pos].cells[0].textContent = alumno.NumControl;
+                tbody.rows[pos].cells[1].textContent = alumno.Nombre;
+                tbody.rows[pos].style.display = null;
+            }
+            let total = final - inicio + 1;
+
+            for (let i = total; i < tamañoPaginas; i++) {
+
+                tbody.rows[i].style.display = "none";
+            
+            }
+
+        }
+        tfoot.addEventListener("click", function (e) { 
+        
+        
+            if (e.target.tagName == "A") {
+            
+                let pagina = parseInt(e.target.textContent) - 1;
+
+                mostrstDatos(pagina);
+            }
+        })
+
+        mostrstDatos(0);
+
+    </script>
+   
+</body>
+</html>
