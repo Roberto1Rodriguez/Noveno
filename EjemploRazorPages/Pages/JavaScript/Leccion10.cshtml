@@ -13,6 +13,7 @@
             width: 80%;
             margin: auto;
             border-collapse: collapse;
+           
         }
 
 
@@ -87,7 +88,7 @@
         }
                 .contextMenu{
                     display:none;
-                    border:1px solid black;
+                    border:1px solid gray;
                     padding:5px;
                     width:150px;
                     position:absolute;
@@ -132,7 +133,11 @@ color:blue;                }
         </tbody>
     </table>
    
+    <div class="contextMenu">
+        <a href="javascript:">Editar</a>
+        <a href="javascript:">Eliminar</a>
 
+    </div>
 
     <div class="modal">
         <form class="formAgregar">
@@ -150,8 +155,8 @@ color:blue;                }
 
     <div class="modal">
         <form class="formEditar">
-            <input type="text" placeholder="Número de control" />
-            <input type="text" placeholder="Nombre" />
+            <input name="numControl" type="text" placeholder="Número de control" required pattern="\d{2}1[A-Z][EC0DM]\d{3}" />
+            <input name="nombre" type="text" placeholder="Nombre" required />
             <input type="submit" value="Guardar" />
             <input type="button" value="Cancelar" />
 
@@ -167,42 +172,46 @@ color:blue;                }
             <p>¿Desea eliminar?</p>
             <input type="submit" value="Si" />
             <input type="button" value="No" />
-
-
-
         </form>
     </div>
 
 
 
+    
     <script>
-
-
-
-    </script>
-    <script>
-
+        
 
 
         const formAgregar = document.querySelector(".formAgregar");
+        const formEliminar = document.querySelector(".formEliminar");
+
+        const formEditar = document.querySelector(".formEditar");
+
         const tabla = document.querySelector("table tbody");
         const contextMenu = document.querySelector(".contextMenu");
+
         document.getElementById("btnNuevo").addEventListener("click", function(){
             formAgregar.parentElement.style.display="block"; });
 
         document.body.addEventListener("click", function (e) {
-            if (e.target.tagName == "INPUT"&&( e.target.value=="Cancelar"||e.target.value=="No" ))
-            {
+            if (e.target.tagName == "INPUT" && (e.target.value == "Cancelar" || e.target.value == "No")) {
                 e.stopPropagation();
+               
                 e.target.form.reset();
                 e.target.form.parentElement.style.display = "none";
             }
 
-            else if (e.target.tagName == "TD" && e.target.textContent.trim() == "⋮") {
+            else if (e.target.tagName == "TD" && e.target.parentElement.lastElementChild == e.target) {
+
                 e.stopPropagation();
                 e.target.append(contextMenu);
+                return;
+            }
+            if (e.target != contextMenu) {
+                document.body.append(contextMenu);
             }
         });
+        
         document.body.addEventListener("submit", function (ev) {
             ev.preventDefault();
             let form = ev.target;
@@ -215,8 +224,45 @@ color:blue;                }
                 form.parentElement.style.display = "none";
 
             }
+            else if (form.classList.contains("formEliminar")) {
+
+                if (rowSeleccionado) {
+                    rowSeleccionado.remove();
+                    rowSeleccionado = null;
+                    form.parentElement.style.display = "none";
+                }
+            }
+            else if (form == formEditar) {
+                if (rowSeleccionado) {
+                    rowSeleccionado.cells[0].textContent = form.elements.numControl.value;
+                    rowSeleccionado.cells[1].textContent = form.elements.nombre.value;
+
+                    rowSeleccionado = null;
+                    form.parentElement.style.display = "none";
+                }
+            }
         });
 
+
+
+
+        var rowSeleccionado;
+        contextMenu.addEventListener("click", function (e) {
+            let form = e.target.textContent == "Eliminar" ? formEliminar
+                : e.target.textContent == "Editar" ? formEditar :
+            null;
+
+          if(form){
+              rowSeleccionado = e.target.closest("tr");
+
+              if (form == formEditar) {
+                  form.elements.numControl.value = rowSeleccionado.cells[0].textContent;
+                    form.elements.nombre.value = rowSeleccionado.cells[1].textContent;
+              }
+              form.parentElement.style.display = "block";
+          }
+        }
+        );
     
     </script>
 </body>
