@@ -1,0 +1,36 @@
+﻿@page
+@model EjemploRazorPages.Pages.Encuestas.encuestaModel
+@{
+}
+<html>
+<head>
+    <link href="~/css/ejercicio2.css" rel="stylesheet" />
+</head>
+<body>
+    <main>
+
+      
+        <h1>Encuesta de Satisfacción</h1>
+        <p id="question">
+            ¿Para qué sirve hacer encuestas de satisfacción del cliente?
+        </p>
+        <p id="loader">
+            <img class="loaderimg" src="~/Loaders/loaderbot.gif" />
+        </p>
+        <div class="escala">
+            <img data-valor="1" class="muymalo" src="~/img/muymalo.png" />
+            <img data-valor="2" class="malo" src="~/img/malo.png" />
+            <img data-valor="3" class="regular" src="~/img/regular.png" />
+            <img  data-valor="4" class="bueno" src="~/img/bueno.png" />
+            <img data-valor="5" class="excelente" src="~/img/excelente.png" />
+            <label>Muy malo</label>
+            <label>Malo</label>
+            <label>Regular</label>
+            <label>Bueno</label>
+            <label>Excelente</label>
+        </div>
+        <input id="boton" type="button" value="SIGUIENTE" />
+        <script src="~/scripts/ejercicio2.js"></script>
+    </main>
+</body>
+</html>
