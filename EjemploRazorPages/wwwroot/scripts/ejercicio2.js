@@ -58,13 +58,13 @@ escala.addEventListener("click", function (e) {
     }
 })
 
-boton.addEventListener("click", function () {
+boton.addEventListener("click", async function () {
 
 
 
     if (seleccionado) {
 
-        let resp = { idPregunta: listaPreguntas[actual].id, valor: seleccionado.dataset.valor };
+        let resp = { id: listaPreguntas[actual].id, valor: seleccionado.dataset.valor };
         respuestas.push(resp);
         //verificar si quedan preguntas
         if (actual < listaPreguntas.length - 1) {
@@ -80,7 +80,17 @@ boton.addEventListener("click", function () {
             boton.hidden = true;
             loader.hidden = false;
 
-            let response = fetch();
+            let response = await fetch(baseUrl,
+                {
+                    method: "post",
+                    body: JSON.stringify(respuestas),
+                    headers: {"Content-Type":"application/json"}
+                });
+
+            if (response.ok) {
+
+                window.location.href = "/Encuestas/agradecimiento";
+            }
         }
        
        
