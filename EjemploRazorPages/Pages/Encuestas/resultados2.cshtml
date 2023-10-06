@@ -23,7 +23,7 @@
     </main>
     <script>
 
-        const baseUrl="https://integracion.itesrc.net/api/encuestas/resultados"
+        const baseUrl = "https://integracion.itesrc.net/api/encuesta/resultados"
 
         async function descargarResultados() {
             let response = await fetch(baseUrl);
@@ -32,13 +32,13 @@
             
                 let resultados = await response.json();
                 document.getElementById("total").textContent = resultados.totalEncuestas;
-                document.getElementById("puntuacion").textContent = resultados.puntuacion.toFixec(2);
+                document.getElementById("puntuacion").textContent = resultados.puntuacion.toFixed(2);
               
             }
         };
 
         google.charts.load('current', { 'packages': ['bar'], 'language': 'es' });
-        google.charts.setOnLoadCallback(drawChart);
+        google.charts.setOnLoadCallback(descargarResultados);
 
         function drawChart() {
             var data = google.visualization.arrayToDataTable([
